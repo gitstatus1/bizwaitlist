@@ -62,7 +62,7 @@ export default function Form() {
                     </label>
                 </div>
                 <button className='submit-button' type='submit' onClick={handleClick}><span>Submit</span></button>
-                <div style={{ minHeight: '2rem' }}>
+                <div className={`thanks ${Clicked ? 'fade-in' : ''}`} style={{ minHeight: '2rem' }}>
                 {Clicked && (
                     <p>✅ Thank you for showing interest — we'll be in contact promptly</p>
                 )}
