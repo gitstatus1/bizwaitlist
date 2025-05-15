@@ -24,23 +24,23 @@ export default function Form() {
             <form className='form'>
                 <div className='form-group'>
                     <label > 
-                        Name:
-                        <input name='name' type='text'/>
+                        Name: *
                     </label>
+                    <input name='name' type='text' required/>
                 </div>
                 <div className='form-group'>
                     <label > 
-                        Email:
-                        <input name='email' type='text'/>
+                        Email: *
+                    <input name='email' type='text'/>
                     </label>
                 </div>
 
                 <div className='form-group'>
                     <label > 
-                        Location:
+                        Country: *
                     </label>
 
-                    <CountrySelect onChange={(e) => {setCountryid(e.id); console.log(e);}} onTextChange={(txt)=>console.log(txt)} placeHolder='Select Country' />
+                    <CountrySelect onChange={(e) => {setCountryid(e.id); console.log(e);}} onTextChange={(txt)=>console.log(txt)} placeHolder='Select Country' required/>
 
                     <label>
                         State:
@@ -58,8 +58,8 @@ export default function Form() {
                 <div className='form-group'>
                     <label>
                         Comments:
-                        <textarea placeholder='What type of product are you looking for'/> 
                     </label>
+                        <input placeholder='What type of product are you looking for'/> 
                 </div>
                 <button className='submit-button' type='submit' onClick={handleClick}><span>Submit</span></button>
                 <div className={`thanks ${Clicked ? 'fade-in' : ''}`} style={{ minHeight: '2rem' }}>

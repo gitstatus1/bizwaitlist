@@ -43,7 +43,7 @@ form label {
   text-align: left;
 }
 form input,
-form textarea{
+form input{
   padding: 0.75rem 1rem;
   border: 1px solid #ddd;
   border-radius: 8px;
