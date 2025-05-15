@@ -1,15 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {
+  CitySelect,
+  CountrySelect,
+  StateSelect} from "react-country-state-city";
+import "react-country-state-city/dist/react-country-state-city.css";
+import "../styles/form.css"
+
 
 export default function Form() {
+    const [countryid, setCountryid] = useState(null);
+    const [stateid, setstateid] = useState(null);
+    const [cityid, setcityid] = useState(null);
+    const [Clicked, setClicked] = useState(false)
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        setClicked(true);
+    }
 
     return(
         <>
-            <p>Yo this is the form</p>
-            <form>
-                <label> 
-                    <input type='text' value="t"/>
-                </label>
-            </form>
+            <h1>Join the wait list</h1>
+            <form className='form'>
+                <div className='form-group'>
+                    <label > 
+                        Name:
+                        <input name='name' type='text'/>
+                    </label>
+                </div>
+                <div className='form-group'>
+                    <label > 
+                        Email:
+                        <input name='email' type='text'/>
+                    </label>
+                </div>
+
+                <div className='form-group'>
+                    <label > 
+                        Location:
+                    </label>
+
+                    <CountrySelect onChange={(e) => {setCountryid(e.id); console.log(e);}} onTextChange={(txt)=>console.log(txt)} placeHolder='Select Country' />
+
+                    <label>
+                        State:
+                    </label>
+                    
+                    <StateSelect disabled ={!countryid} countryid={countryid} onChange={(e) => {setstateid(e.id); console.log(e)}} placeholder='Select State'/>
+  
+                    <label>
+                        Locality:
+                    </label>               
+                
+                    <CitySelect disabled ={!stateid} stateid={stateid} countryid={countryid} onChange={(e) => {setcityid(e.id); console.log(e)}} placeholder='Select City'/>
+                </div>
+
+                <div className='form-group'>
+                    <label>
+                        Comments:
+                        <textarea placeholder='What type of product are you looking for'/> 
+                    </label>
+                </div>
+                <button className='submit-button' type='submit' onClick={handleClick}><span>Submit</span></button>
+                <div style={{ minHeight: '2rem' }}>
+                {Clicked && (
+                    <p>✅ Thank you for showing interest — we'll be in contact promptly</p>
+                )}
+                </div>
+        </form>
         </>
     )
 }
