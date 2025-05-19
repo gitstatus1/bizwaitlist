@@ -8,30 +8,63 @@ import "../styles/form.css"
 
 
 export default function Form() {
-    const [countryid, setCountryid] = useState(null);
-    const [stateid, setstateid] = useState(null);
-    const [cityid, setcityid] = useState(null);
+    const [countryid, setCountryId] = useState(null);
+    const [countryName, setCountryName] = useState(null);
+
+    const [stateid, setStateId] = useState(null);
+    const [stateName, setStateName] = useState(null);
+
+    const [cityid, setCityId] = useState(null);
+    const [cityName, setCityName] = useState(null);
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [comment, setComment] = useState('');
+    
     const [Clicked, setClicked] = useState(false)
 
-    const handleClick = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!name || !email || !countryid){
+            alert('Please fill in all required fields');
+            return;
+        }
         setClicked(true);
-    }
+        nameValidation(name);
+        console.log({
+            name,
+            email,
+            countryName,
+            stateName, 
+            cityName,
+            comment
+        })
+    };
+
+    const nameValidation = () => {
+        const nameBox = document.querySelector('input[name="name"]');
+        if (!name.trim()) {
+            nameBox.style.border = '1px solid red';
+        } else {
+            nameBox.style.border = '1px solid #ddd'; // reset border if valid
+        }
+    };
 
     return(
         <>
-            <h1>Join the wait list</h1>
-            <form className='form'>
+            <h3>Join the wait list</h3>
+            <form className='form' onSubmit={handleSubmit}>
                 <div className='form-group'>
                     <label > 
                         Name: *
                     </label>
-                    <input name='name' type='text' required/>
+                    <input name='name' value={name} onChange={(e) => setName(e.target.value)} type='text' required/>
                 </div>
                 <div className='form-group'>
                     <label > 
                         Email: *
-                    <input name='email' type='text'/>
+                    <input name='email' value = {email} onChange={(e) => setEmail(e.target.value)} type='text' required/>
                     </label>
                 </div>
 
@@ -40,28 +73,28 @@ export default function Form() {
                         Country: *
                     </label>
 
-                    <CountrySelect onChange={(e) => {setCountryid(e.id); console.log(e);}} onTextChange={(txt)=>console.log(txt)} placeHolder='Select Country' required/>
+                    <CountrySelect value = {countryid} onChange={(e) => {setCountryId(e.id); setCountryName(e.name); console.log(e);}} onTextChange={(txt)=>console.log(txt)} placeHolder='Select Country' required/>
 
                     <label>
                         State:
                     </label>
                     
-                    <StateSelect disabled ={!countryid} countryid={countryid} onChange={(e) => {setstateid(e.id); console.log(e)}} placeholder='Select State'/>
+                    <StateSelect disabled ={!countryid} countryid={countryid} onChange={(e) => {setStateId(e.id); setStateName(e.name); console.log(e)}} placeholder='Select State'/>
   
                     <label>
                         Locality:
                     </label>               
                 
-                    <CitySelect disabled ={!stateid} stateid={stateid} countryid={countryid} onChange={(e) => {setcityid(e.id); console.log(e)}} placeholder='Select City'/>
+                    <CitySelect disabled ={!stateid} stateid={stateid} countryid={countryid} onChange={(e) => {setCityId(e.id); setCityName(e.name); console.log(e)}} placeholder='Select City'/>
                 </div>
 
                 <div className='form-group'>
                     <label>
-                        Comments:
+                        Comments (Optional):
                     </label>
-                        <input placeholder='What type of product are you looking for'/> 
+                        <input value={comment} onChange={(e) => {setComment(e.target.value)}} placeholder='What type of product are you looking for'/> 
                 </div>
-                <button className='submit-button' type='submit' onClick={handleClick}><span>Submit</span></button>
+                <button className='submit-button' type='submit'><span>Submit</span></button>
                 <div className={`thanks ${Clicked ? 'fade-in' : ''}`} style={{ minHeight: '2rem' }}>
                 {Clicked && (
                     <p>✅ Thank you for showing interest — we'll be in contact promptly</p>
