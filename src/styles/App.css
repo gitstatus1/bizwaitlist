@@ -5,16 +5,13 @@
   text-align: center;
 }
 
-.main{
-  background-image: url("/coffeemachine.png");
-  position: relative;
-  background-size: cover;
-  background-position: left;
-  background-repeat: no-repeat;
-  height: 100vh; /* or any fixed height you want */
-  width: 100%;}
-
 .title{
   top: 50%;
-  font-size: 50px;
+  font-size: 96px;
+  font-weight: bold;
+}
+
+.subtitle{
+  font-size: 40px;
+  font-style: italic;
 }

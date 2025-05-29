@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Noto Serif", serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -13,29 +13,32 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, p {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}
 
 body {
   margin: 0;
+  padding: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url("/bgPic.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #000;
+  min-height: 100vh;
+
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+@media (max-width: 600px){
+  body{
+    background-position: center top;
+    background-size: cover;
+  }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
