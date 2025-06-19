@@ -4,26 +4,24 @@ import {
   CountrySelect,
   StateSelect} from "react-country-state-city";
 import "react-country-state-city/dist/react-country-state-city.css";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase/firebase";
 import "../styles/form.css"
 
 
 export default function Form() {
     const [countryid, setCountryId] = useState(null);
     const [countryName, setCountryName] = useState(null);
-
     const [stateid, setStateId] = useState(null);
     const [stateName, setStateName] = useState(null);
-
     const [cityid, setCityId] = useState(null);
     const [cityName, setCityName] = useState(null);
-
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [comment, setComment] = useState('');
-    
+    const [comment, setComment] = useState('');    
     const [Clicked, setClicked] = useState(false)
 
-    const handleSubmit = (e) => {
+    async function handleSubmit (e){
         e.preventDefault();
 
         if (!name || !email || !countryid){
@@ -40,6 +38,26 @@ export default function Form() {
             cityName,
             comment
         })
+
+        await addDoc(collection(db,'contact'), {
+            name: name,
+            email: email,
+            country: countryName,
+            state: stateName,
+            cityName: cityName,
+            comment: comment
+        })
+
+        alert('Thank you for your submission! 👍')
+        setName('');
+        setEmail('');
+        setCountryName('');
+        setStateName('');
+        setCityName('');
+        setComment('');
+        setCountryId(null);
+        setStateId(null);
+        setCityId(null);
     };
 
     const nameValidation = () => {
@@ -64,7 +82,7 @@ export default function Form() {
                 <div className='form-group'>
                     <label > 
                         Email: *
-                    <input name='email' value = {email} onChange={(e) => setEmail(e.target.value)} type='text' required/>
+                    <input name='email' value = {email} onChange={(e) => setEmail(e.target.value)} type='email' required/>
                     </label>
                 </div>
 
