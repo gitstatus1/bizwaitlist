@@ -71,7 +71,6 @@ export default function Form() {
 
     return(
         <>
-            <h2 className='form-title'>Join the Waitlist</h2>
             <form className='form' onSubmit={handleSubmit}>
                 <div className='form-group'>
                     <label > 

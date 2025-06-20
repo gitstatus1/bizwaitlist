@@ -6,9 +6,12 @@
 }
 
 .title{
-  top: 50%;
-  font-size: 96px;
+  font-size: 64px;
   font-weight: bold;
+  outline: 7px solid #35210f;
+  background-color: #fae2b6;
+  color: #35210f;
+  padding: 15px;
 }
 
 .subtitle{
@@ -19,5 +22,12 @@
 .logo{
   width: 400px;
   height: 400px;
-  display: inline;
+}
+
+.top-div{
+  display: flex;
+}
+
+.title-div{
+  margin-top: 5rem;
 }
