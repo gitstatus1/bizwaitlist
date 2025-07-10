@@ -4,20 +4,16 @@
     padding: 2rem;
     background-color: #3d3b3b;
     border-radius: 12px;
-    min-width: 700px;
+    min-width: 300px;
     max-width: 700px;
-    min-height: 760px;
-    max-height: 760px;
-    width: 100%;
+    min-height: auto;
+    max-height: none;
+    width: 90%;
     margin: 0 auto;
     gap:15px;
     opacity: 0.9;
 }
 
-.form-title{
-  padding-left: 65px;
-  text-align: left;
-}
 
 form .stdropdown-menu {
   background-color: #111 !important;
@@ -76,7 +72,7 @@ button {
   text-align: center;
   font-size: 25px;
   padding: 10px;
-  width: 150px;
+  max-width: 150px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;

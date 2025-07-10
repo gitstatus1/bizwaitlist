@@ -7,14 +7,14 @@ function App() {
   return (
     <div className = "main">
       <div className = "top-div">
-        <div className = 'logo-div'>
-          <img src={logo} className = 'logo'/>
-        </div>
+          <div className = 'logo-div'>
+            <img src={logo} className = 'logo'/>
+          </div>
         <div className = 'title-div'>
-          <p className= 'title'>Coffee and Equipment co.</p>
+          <p className= 'title'>COFFEE AND GEAR CO.</p>
         </div>
       </div>
-        <p className= 'subtitle'>"Curated Coffee Gear, Crafted for Connoiseurs"</p>
+        <p className= 'subtitle'>"Curated coffee gear, crafted for connoiseurs"</p>
       <Form />
     </div>
   )

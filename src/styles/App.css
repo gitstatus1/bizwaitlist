@@ -6,22 +6,25 @@
 }
 
 .title{
-  font-size: 64px;
-  font-weight: bold;
-  outline: 7px solid #35210f;
+  font-size: clamp(20px, 6vw, 64px);
+  font-weight: 1000;
+  outline: 6px solid #35210f;
   background-color: #fae2b6;
   color: #35210f;
-  padding: 15px;
+  padding: 5px;
+  margin-bottom: 1rem;
 }
 
 .subtitle{
-  font-size: 40px;
+  font-size: clamp(18px, 4vw, 40px);
   font-style: italic;
+  margin-bottom: 1rem;
 }
 
 .logo{
-  width: 400px;
-  height: 400px;
+  width: 80vw;
+  max-width: 300px;
+  height: auto;
 }
 
 .top-div{
@@ -30,4 +33,17 @@
 
 .title-div{
   margin-top: 5rem;
+}
+
+@media (max-width: 600px) {
+
+
+  .title-div {
+    margin-top: 0.05rem;
+  }
+  
+  .top-div {
+    flex-direction: column;
+    align-items: center;
+  }
 }
